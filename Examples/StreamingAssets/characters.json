@@ -1,0 +1,26 @@
+{
+  "characters": [
+    {
+      "id": "jan_tenner",
+      "displayName": "Jan Tenner",
+      "bio": "Der mutige Protagonist.",
+      "alwaysAvailable": true,
+      "stats": {
+        "health": 100,
+        "speed": 5.0,
+        "attackPower": 10
+      }
+    },
+    {
+      "id": "commander_fox",
+      "displayName": "Commander Fox",
+      "bio": "Erfahrener Kommandant.",
+      "alwaysAvailable": false,
+      "stats": {
+        "health": 120,
+        "speed": 4.0,
+        "attackPower": 15
+      }
+    }
+  ]
+}

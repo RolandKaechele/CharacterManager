@@ -36,9 +36,14 @@ Supports JSON roster files for modding.
 git clone https://github.com/RolandKaechele/CharacterManager.git Assets/CharacterManager
 ```
 
-### Option C — Manual copy
+### Option C — npm / postinstall
 
-Copy the `CharacterManager/` folder into your project's `Assets/` directory.
+```bash
+cd Assets/CharacterManager
+npm install
+```
+
+`postinstall.js` creates the required `StreamingAssets/` folder under `Assets/` and optionally copies example JSON files.
 
 
 ## Scene Setup

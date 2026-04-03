@@ -21,5 +21,8 @@
     "modding",
     "framework"
   ],
-  "documentationUrl": "https://github.com/RolandKaechele/CharacterManager#readme"
+  "documentationUrl": "https://github.com/RolandKaechele/CharacterManager#readme",
+  "scripts": {
+    "postinstall": "node postinstall.js"
+  }
 }
