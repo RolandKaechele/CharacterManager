@@ -16,6 +16,7 @@ Supports JSON roster files for modding.
 - **GalleryManager integration** — calls `GalleryManager.UnlockStatic(id)` when a character is unlocked (activated via `CHARACTERMANAGER_GM`)
 - **EventManager integration** — fires `CharacterUnlocked` and `ActiveCharacterChanged` as GameEvents (activated via `CHARACTERMANAGER_EM`)
 - **Custom Inspector** — per-character availability status with Unlock / Lock / Set Active buttons at runtime
+- **Odin Inspector integration** — `SerializedMonoBehaviour` base for full Inspector serialization of complex types; runtime-display fields marked `[ReadOnly]` in Play Mode (activated via `ODIN_INSPECTOR`)
 
 
 ## Installation
@@ -180,6 +181,11 @@ Requires `CHARACTERMANAGER_EM` define. The following named GameEvents are fired:
 | `ActiveCharacterChanged` | `SetActive(id)`; value = new character id |
 
 
+### Odin Inspector (`ODIN_INSPECTOR`)
+
+Requires `ODIN_INSPECTOR` define (standard Odin Inspector scripting define). Inherits from `SerializedMonoBehaviour` for full Inspector serialization; runtime-display fields are marked `[ReadOnly]`.
+
+
 ## Dependencies
 
 | Dependency | Required | Notes |
@@ -188,6 +194,7 @@ Requires `CHARACTERMANAGER_EM` define. The following named GameEvents are fired:
 | SaveManager | optional | Required when `CHARACTERMANAGER_SM` is defined |
 | GalleryManager | optional | Required when `CHARACTERMANAGER_GM` is defined |
 | EventManager | optional | Required when `CHARACTERMANAGER_EM` is defined |
+| Odin Inspector | optional | Required when `ODIN_INSPECTOR` is defined |
 
 
 ## Repository

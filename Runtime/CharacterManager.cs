@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 namespace CharacterManager.Runtime
 {
@@ -93,7 +96,11 @@ namespace CharacterManager.Runtime
     /// </summary>
     [AddComponentMenu("CharacterManager/Character Manager")]
     [DisallowMultipleComponent]
+#if ODIN_INSPECTOR
+    public class CharacterManager : SerializedMonoBehaviour
+#else
     public class CharacterManager : MonoBehaviour
+#endif
     {
         // -------------------------------------------------------------------------
         // Inspector
