@@ -16,6 +16,7 @@ Supports JSON roster files for modding.
 - **GalleryManager integration** — calls `GalleryManager.UnlockStatic(id)` when a character is unlocked (activated via `CHARACTERMANAGER_GM`)
 - **EventManager integration** — fires `CharacterUnlocked` and `ActiveCharacterChanged` as GameEvents (activated via `CHARACTERMANAGER_EM`)
 - **Custom Inspector** — per-character availability status with Unlock / Lock / Set Active buttons at runtime
+- **RealToon Pro integration** — auto-applies and configures RealToon material property overrides (outline color, shadow color, smoothness) per `CharacterDefinition` when the active character changes (activated via `CHARACTERMANAGER_REALTOON`)
 - **Odin Inspector integration** — `SerializedMonoBehaviour` base for full Inspector serialization of complex types; runtime-display fields marked `[ReadOnly]` in Play Mode (activated via `ODIN_INSPECTOR`)
 
 
