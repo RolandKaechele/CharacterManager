@@ -1,28 +1,28 @@
 {
-  "name": "com.rolandkaechele.charactermanager",
-  "displayName": "Character Manager",
-  "version": "1.0.0",
-  "unity": "2022.3",
-  "description": "Manages the character roster: definitions (name, bio, portrait, stats), availability unlock state via PlayerPrefs, active character tracking, and JSON roster support for modding.",
-  "author": {
-    "name": "Roland Kaechele",
-    "url": "https://github.com/RolandKaechele/CharacterManager"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/RolandKaechele/CharacterManager.git"
-  },
-  "license": "MIT",
-  "keywords": [
-    "unity",
-    "character",
-    "roster",
-    "unlock",
-    "modding",
-    "framework"
-  ],
-  "documentationUrl": "https://github.com/RolandKaechele/CharacterManager#readme",
-  "scripts": {
-    "postinstall": "node postinstall.js"
-  }
+    "name":  "com.rolandkaechele.charactermanager",
+    "displayName":  "Character Manager",
+    "version":  "1.0.0",
+    "unity":  "2022.3",
+    "description":  "Manages the character roster: definitions (name, bio, portrait, stats), availability unlock state via PlayerPrefs, active character tracking, and JSON roster support for modding.",
+    "author":  {
+                   "name":  "Roland Kaechele",
+                   "url":  "https://github.com/RolandKaechele/CharacterManager"
+               },
+    "repository":  {
+                       "type":  "git",
+                       "url":  "https://github.com/RolandKaechele/CharacterManager.git"
+                   },
+    "license":  "MIT",
+    "keywords":  [
+                     "unity",
+                     "character",
+                     "roster",
+                     "unlock",
+                     "modding",
+                     "framework"
+                 ],
+    "documentationUrl":  "https://github.com/RolandKaechele/CharacterManager#readme",
+    "scripts":  {
+                    "postinstall":  "node postinstall.js"
+                }
 }
