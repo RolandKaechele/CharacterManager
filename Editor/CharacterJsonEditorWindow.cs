@@ -18,8 +18,7 @@ namespace CharacterManager.Editor
     /// </summary>
     public class CharacterJsonEditorWindow : EditorWindow
     {
-        private const string JsonFolderName   = "characters";
-        private const string JsonSaveFileName = "characters.json";
+        private const string JsonFolderName = "characters";
 
         private CharacterEditorBridge    _bridge;
         private UnityEditor.Editor       _bridgeEditor;
@@ -93,7 +92,6 @@ namespace CharacterManager.Editor
                 else
                 {
                     Directory.CreateDirectory(folderPath);
-                    File.WriteAllText(Path.Combine(folderPath, JsonSaveFileName), JsonUtility.ToJson(new CharacterEditorWrapper(), true));
                     AssetDatabase.Refresh();
                 }
                 _bridge.characters = list;
@@ -110,11 +108,16 @@ namespace CharacterManager.Editor
             {
                 string folderPath = Path.Combine(Application.streamingAssetsPath, JsonFolderName);
                 if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
-                var w = new CharacterEditorWrapper { characters = _bridge.characters.ToArray() };
-                var path = Path.Combine(folderPath, JsonSaveFileName);
-                File.WriteAllText(path, JsonUtility.ToJson(w, true));
+                int saved = 0;
+                foreach (var entry in _bridge.characters)
+                {
+                    if (string.IsNullOrEmpty(entry.id)) continue;
+                    var w = new CharacterEditorWrapper { characters = new[] { entry } };
+                    File.WriteAllText(Path.Combine(folderPath, $"{entry.id}.json"), JsonUtility.ToJson(w, true));
+                    saved++;
+                }
                 AssetDatabase.Refresh();
-                _status = $"Saved {_bridge.characters.Count} characters to {JsonFolderName}/{JsonSaveFileName}.";
+                _status = $"Saved {saved} character file(s) to {JsonFolderName}/";
                 _statusError = false;
             }
             catch (Exception e) { _status = $"Save error: {e.Message}"; _statusError = true; }

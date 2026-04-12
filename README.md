@@ -198,7 +198,7 @@ Open via **JSON Editors → Character Manager** in the Unity menu bar, or via th
 | ------ | ------ |
 | **Load** | Reads all `*.json` from `StreamingAssets/characters/`; creates the folder if missing |
 | **Edit** | Add / remove / reorder entries using the Inspector list |
-| **Save** | Writes to `StreamingAssets/characters/characters.json` and calls `AssetDatabase.Refresh()` |
+| **Save** | Writes each entry as `<id>.json` to `StreamingAssets/characters/`; entries without an `id` are skipped. Calls `AssetDatabase.Refresh()` |
 
 With **ODIN_INSPECTOR** active, the list uses Odin's enhanced drawer (drag-to-sort, collapsible entries).
 
