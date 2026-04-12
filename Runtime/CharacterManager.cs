@@ -118,8 +118,8 @@ namespace CharacterManager.Runtime
         [Tooltip("When enabled, merge roster definitions from a JSON file in StreamingAssets/ at startup.")]
         [SerializeField] private bool loadFromJson = false;
 
-        [Tooltip("Path relative to StreamingAssets/ (e.g. 'characters.json').")]
-        [SerializeField] private string jsonPath = "characters.json";
+        [Tooltip("Path relative to StreamingAssets/ (e.g. 'characters/' or 'characters.json').")]
+        [SerializeField] private string jsonPath = "characters/";
 
         // -------------------------------------------------------------------------
         // Events
@@ -172,12 +172,24 @@ namespace CharacterManager.Runtime
 
         private void LoadJson()
         {
-            string path = Path.Combine(Application.streamingAssetsPath, jsonPath);
-            if (!File.Exists(path))
+            string fullPath = Path.Combine(Application.streamingAssetsPath, jsonPath);
+            if (Directory.Exists(fullPath))
             {
-                Debug.LogWarning($"[CharacterManager] JSON not found: {path}");
-                return;
+                foreach (var file in Directory.GetFiles(fullPath, "*.json", SearchOption.TopDirectoryOnly))
+                    MergeCharactersFromFile(file);
             }
+            else if (File.Exists(fullPath))
+            {
+                MergeCharactersFromFile(fullPath);
+            }
+            else
+            {
+                Debug.LogWarning($"[CharacterManager] JSON not found: {fullPath}");
+            }
+        }
+
+        private void MergeCharactersFromFile(string path)
+        {
             try
             {
                 var wrapper = JsonUtility.FromJson<CharacterRosterJson>(File.ReadAllText(path));
@@ -197,7 +209,7 @@ namespace CharacterManager.Runtime
                         _index[c.id] = c;
                     }
                 }
-                Debug.Log($"[CharacterManager] Roster merged from {path}.");
+                Debug.Log($"[CharacterManager] Merged from {path}.");
             }
             catch (Exception ex)
             {

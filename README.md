@@ -11,7 +11,7 @@ Supports JSON roster files for modding.
 - **Availability tracking** — unlock state persisted via `PlayerPrefs`; `alwaysAvailable` flag for default characters
 - **Active character** — `SetActive(id)` / `GetActiveCharacter()` / `ActiveCharacterId`
 - **Character stats** — `CharacterStats` struct (health, speed, attackPower) on every definition; extend as needed
-- **JSON / Modding** — load and merge roster definitions from `StreamingAssets/characters.json` at startup
+- **JSON / Modding** — load and merge roster definitions from `StreamingAssets/characters/` at startup
 - **SaveManager integration** — checks `char_<id>` save flags as an additional availability source (activated via `CHARACTERMANAGER_SM`)
 - **GalleryManager integration** — calls `GalleryManager.UnlockStatic(id)` when a character is unlocked (activated via `CHARACTERMANAGER_GM`)
 - **EventManager integration** — fires `CharacterUnlocked` and `ActiveCharacterChanged` as GameEvents (activated via `CHARACTERMANAGER_EM`)
@@ -64,7 +64,7 @@ npm install
 | `characters` | *(empty)* | All character definitions |
 | `defaultCharacterId` | *(empty)* | Active character set on Awake |
 | `loadFromJson` | `false` | Merge from JSON on Awake |
-| `jsonPath` | `"characters.json"` | Path relative to `StreamingAssets/` |
+| `jsonPath` | `"characters/"` | Folder relative to `StreamingAssets/` containing `.json` files to merge. Falls back to single-file mode if the value points to an existing file. |
 
 ### 2. Unlock and query characters
 
@@ -101,7 +101,10 @@ CharacterManager.Runtime.CharacterManager.UnlockStatic("commander_fox");
 
 ## JSON / Modding
 
-Enable `loadFromJson` and place `characters.json` in `StreamingAssets/`.
+Enable `loadFromJson` and place one or more `.json` files in `StreamingAssets/characters/`.
+All `*.json` files in the folder are loaded and merged by `id` at startup.
+
+**Example:** `StreamingAssets/characters/main.json`
 
 ```json
 {
@@ -193,9 +196,9 @@ Open via **JSON Editors → Character Manager** in the Unity menu bar, or via th
 
 | Action | Result |
 | ------ | ------ |
-| **Load** | Reads `StreamingAssets/characters.json`; creates the file if missing |
+| **Load** | Reads all `*.json` from `StreamingAssets/characters/`; creates the folder if missing |
 | **Edit** | Add / remove / reorder entries using the Inspector list |
-| **Save** | Writes back to `StreamingAssets/characters.json` and calls `AssetDatabase.Refresh()` |
+| **Save** | Writes to `StreamingAssets/characters/characters.json` and calls `AssetDatabase.Refresh()` |
 
 With **ODIN_INSPECTOR** active, the list uses Odin's enhanced drawer (drag-to-sort, collapsible entries).
 
