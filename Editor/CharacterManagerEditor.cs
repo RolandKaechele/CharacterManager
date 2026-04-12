@@ -16,6 +16,9 @@ namespace CharacterManager.Editor
         {
             DrawDefaultInspector();
 
+            EditorGUILayout.Space(4);
+            if (GUILayout.Button("Open JSON Editor")) CharacterJsonEditorWindow.ShowWindow();
+
             EditorGUILayout.Space(6);
 
             // ── Validation ──────────────────────────────────────────────────────
