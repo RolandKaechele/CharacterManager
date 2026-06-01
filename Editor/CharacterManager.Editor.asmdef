@@ -1,8 +1,9 @@
-﻿{
+{
     "name": "CharacterManager.Editor",
     "rootNamespace": "CharacterManager.Editor",
     "references": [
-        "CharacterManager.Runtime"
+        "CharacterManager.Runtime",
+        "UnityEngine.UI"
     ],
     "includePlatforms": [
         "Editor"
